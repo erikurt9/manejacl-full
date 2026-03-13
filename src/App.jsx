@@ -463,10 +463,10 @@ function ModoEstudio() {
 // ─── INICIO ───────────────────────────────────────────────────────────────────
 function Inicio({ onIniciar, onLoginClick, onLegalClick }) {
   return (
-    <div className="flex items-center justify-center w-full h-full overflow-y-auto py-8 relative">
+    <div className="w-full h-full overflow-y-auto md:overflow-hidden flex flex-col">
 
-      {/* Botón login — esquina superior derecha */}
-      <div className="absolute top-5 right-6">
+      {/* Botón login */}
+      <div className="flex justify-end px-8 pt-4 pb-0 flex-shrink-0">
         <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
           onClick={onLoginClick}
           className="text-sm text-slate-400 hover:text-white font-semibold px-4 py-2 rounded-xl border border-slate-700/80 hover:border-slate-500 transition-all"
@@ -476,35 +476,35 @@ function Inicio({ onIniciar, onLoginClick, onLegalClick }) {
       </div>
 
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-        className="flex flex-col items-center max-w-3xl w-full px-5 md:px-8">
+        className="flex-1 flex flex-col items-center justify-center w-full mx-auto px-6 md:px-16 py-4 md:py-0" style={{ marginTop: "-40px", maxWidth: "1100px" }}>
 
         {/* Logo */}
         <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-          className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-2xl shadow-blue-500/30 mb-6 md:mb-8">
-          <svg width="30" height="30" fill="none" viewBox="0 0 24 24">
+          className="w-14 h-14 md:w-16 md:h-16 rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-2xl shadow-blue-500/30 mb-4 md:mb-4">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
 
         {/* Título */}
         <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="text-5xl md:text-6xl font-black text-white tracking-tight mb-3">
+          className="text-5xl md:text-6xl font-black text-white tracking-tight mb-2">
           Maneja<span className="text-blue-400">CL</span>
         </motion.h1>
 
         {/* Subtítulo */}
         <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-          className="text-slate-400 text-center text-base md:text-lg mb-8 md:mb-12 max-w-md leading-relaxed">
+          className="text-slate-400 text-center text-sm md:text-base mb-4 md:mb-5 max-w-md leading-relaxed">
           Practica el examen teórico CONASET completamente gratis. Preguntas oficiales, sin límites.
         </motion.p>
 
         {/* Stats */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-          className="grid grid-cols-4 gap-8 md:gap-16 mb-8 md:mb-12 w-full max-w-lg">
+          className="grid grid-cols-4 gap-3 sm:gap-8 md:gap-12 mb-4 md:mb-5 w-full max-w-lg">
           {[["B + C", "Clases"], ["100%", "Gratis"], ["45 min", "Examen"], ["2026", "Actualizado"]].map(([v, l]) => (
             <div key={l} className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-white mb-1 whitespace-nowrap">{v}</div>
+              <div className="text-xl md:text-3xl font-black text-white mb-0.5 whitespace-nowrap">{v}</div>
               <div className="text-xs text-slate-500">{l}</div>
             </div>
           ))}
@@ -517,47 +517,47 @@ function Inicio({ onIniciar, onLoginClick, onLegalClick }) {
           <button onClick={() => onIniciar("examen")}
             className="text-left p-5 md:p-6 rounded-2xl border-2 border-blue-500/40 hover:border-blue-500 transition-all hover:-translate-y-1 active:scale-95 bg-transparent outline-none"
             style={{ background: "rgba(59,130,246,0.08)" }}>
-            <div className="text-2xl md:text-3xl mb-3 md:mb-4">📋</div>
+            <div className="text-3xl mb-3">📋</div>
             <p className="text-white font-black text-base md:text-lg mb-1">Modo Examen</p>
-            <p className="text-slate-400 text-sm leading-snug mb-3 md:mb-4">Sin retroalimentación. Idéntico al examen real del CONASET.</p>
+            <p className="text-slate-400 text-sm leading-snug mb-3">Sin retroalimentación. Idéntico al examen real del CONASET.</p>
             <span className="text-blue-400 text-sm font-semibold">Iniciar →</span>
           </button>
 
           <button onClick={() => onIniciar("estudio")}
             className="text-left p-5 md:p-6 rounded-2xl border-2 border-amber-500/40 hover:border-amber-500 transition-all hover:-translate-y-1 active:scale-95 outline-none"
             style={{ background: "rgba(245,158,11,0.08)" }}>
-            <div className="text-2xl md:text-3xl mb-3 md:mb-4">💡</div>
+            <div className="text-3xl mb-3">💡</div>
             <p className="text-white font-black text-base md:text-lg mb-1">Modo Estudio</p>
-            <p className="text-slate-400 text-sm leading-snug mb-3 md:mb-4">Feedback inmediato y explicaciones detalladas en cada pregunta.</p>
+            <p className="text-slate-400 text-sm leading-snug mb-3">Feedback inmediato y explicaciones detalladas en cada pregunta.</p>
             <span className="text-amber-400 text-sm font-semibold">Estudiar →</span>
           </button>
 
           <button onClick={() => onIniciar("libre")}
             className="text-left p-5 md:p-6 rounded-2xl border-2 border-emerald-500/40 hover:border-emerald-500 transition-all hover:-translate-y-1 active:scale-95 outline-none"
             style={{ background: "rgba(34,197,94,0.08)" }}>
-            <div className="text-2xl md:text-3xl mb-3 md:mb-4">🎯</div>
+            <div className="text-3xl mb-3">🎯</div>
             <p className="text-white font-black text-base md:text-lg mb-1">Modo Libre</p>
-            <p className="text-slate-400 text-sm leading-snug mb-3 md:mb-4">Todas las preguntas, sin límite de tiempo. Para practicar a fondo.</p>
+            <p className="text-slate-400 text-sm leading-snug mb-3">Todas las preguntas, sin límite de tiempo. Para practicar a fondo.</p>
             <span className="text-emerald-400 text-sm font-semibold">Explorar →</span>
           </button>
 
           <button onClick={onLoginClick}
             className="text-left p-5 md:p-6 rounded-2xl border-2 border-slate-700/50 hover:border-slate-500 transition-all hover:-translate-y-1 active:scale-95 outline-none"
             style={{ background: "rgba(255,255,255,0.02)" }}>
-            <div className="text-2xl md:text-3xl mb-3 md:mb-4">📚</div>
+            <div className="text-3xl mb-3">📚</div>
             <p className="text-white font-black text-base md:text-lg mb-1">Banco de Preguntas</p>
-            <p className="text-slate-400 text-sm leading-snug mb-3 md:mb-4">Revisa las preguntas con respuestas y explicaciones. Clase B y C.</p>
+            <p className="text-slate-400 text-sm leading-snug mb-3">Revisa las preguntas con respuestas y explicaciones. Clase B y C.</p>
             <span className="text-slate-500 text-sm font-semibold">🔒 Requiere cuenta</span>
           </button>
 
         </motion.div>
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-          className="text-xs text-slate-600 mt-8 md:mt-10 text-center">
+          className="text-xs text-slate-600 mt-4 text-center">
           Preguntas oficiales del Cuestionario Base CONASET · Chile
         </motion.p>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
-          className="flex items-center justify-center gap-3 mt-2">
+          className="flex items-center justify-center gap-3 mt-1.5 pb-6 md:pb-0">
           <span onClick={() => onLegalClick?.("privacidad")} className="text-xs text-slate-700 hover:text-slate-500 transition-colors cursor-pointer">Privacidad</span>
           <span className="text-slate-800 text-xs">·</span>
           <span onClick={() => onLegalClick?.("terminos")} className="text-xs text-slate-700 hover:text-slate-500 transition-colors cursor-pointer">Términos</span>
