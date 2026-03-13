@@ -75,20 +75,20 @@ function TopBar({ onMenuToggle, showMenu }) {
   const { tiempoRestante, modo, clase } = useStore();
   const urgente = tiempoRestante < 120;
   return (
-    <div className="md:hidden flex items-center justify-between px-4 py-3 border-b border-slate-800 flex-shrink-0">
-      <div className="flex items-center gap-2">
-        <button onClick={() => useStore.getState().reiniciar()} className="flex items-center gap-2 bg-transparent border-0 p-0 hover:opacity-80 transition-opacity">
-          <div className="w-7 h-7 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
+    <div className="md:hidden flex items-center justify-between px-5 py-4 border-b border-slate-800 flex-shrink-0">
+      <div className="flex items-center gap-2.5">
+        <button onClick={() => useStore.getState().reiniciar()} className="flex items-center gap-2.5 bg-transparent border-0 p-0 hover:opacity-80 transition-opacity">
+          <div className="w-8 h-8 rounded-xl bg-blue-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span className="font-black text-white text-base">Maneja<span className="text-blue-400">CL</span></span>
+          <span className="font-black text-white text-lg">Maneja<span className="text-blue-400">CL</span></span>
         </button>
-        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${modo === "examen" ? "bg-blue-500/20 text-blue-400" : modo === "libre" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"}`}>
+        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${modo === "examen" ? "bg-blue-500/20 text-blue-400" : modo === "libre" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"}`}>
           {modo === "examen" ? "Examen" : modo === "libre" ? "Libre" : "Estudio"}
         </span>
-        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${clase === "C" ? "bg-orange-500/20 text-orange-400" : "bg-slate-700/60 text-slate-400"}`}>
+        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${clase === "C" ? "bg-orange-500/20 text-orange-400" : "bg-slate-700/60 text-slate-400"}`}>
           {clase === "C" ? "C" : "B"}
         </span>
       </div>
@@ -98,10 +98,10 @@ function TopBar({ onMenuToggle, showMenu }) {
           {fmt(tiempoRestante)}
         </motion.span>
         )}
-        <button onClick={onMenuToggle} className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 bg-transparent border-0 outline-none">
+        <button onClick={onMenuToggle} className="w-9 h-9 rounded-xl border border-slate-700 flex items-center justify-center text-slate-400 bg-transparent outline-none hover:border-slate-500 hover:text-slate-200 transition-all">
           {showMenu
-            ? <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg>
-            : <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            ? <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            : <svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg>
           }
         </button>
       </div>
@@ -465,18 +465,18 @@ function Inicio({ onIniciar, onLoginClick, onLegalClick }) {
   return (
     <div className="w-full h-full overflow-y-auto md:overflow-hidden flex flex-col">
 
-      {/* Botón login */}
-      <div className="flex justify-end px-8 pt-4 pb-0 flex-shrink-0">
-        <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-          onClick={onLoginClick}
-          className="text-sm text-slate-400 hover:text-white font-semibold px-4 py-2 rounded-xl border border-slate-700/80 hover:border-slate-500 transition-all"
-          style={{ background: "rgba(255,255,255,0.04)" }}>
-          Iniciar sesión
-        </motion.button>
-      </div>
-
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-        className="flex-1 flex flex-col items-center justify-center w-full mx-auto px-6 md:px-16 py-4 md:py-0" style={{ marginTop: "-40px", maxWidth: "1100px" }}>
+        className="flex-1 flex flex-col items-center justify-center w-full mx-auto px-6 md:px-16 py-6 md:py-0" style={{ maxWidth: "1100px" }}>
+
+        {/* Botón login */}
+        <div className="w-full flex justify-end mb-2">
+          <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            onClick={onLoginClick}
+            className="text-sm text-slate-400 hover:text-white font-semibold px-4 py-2 rounded-xl border border-slate-700/80 hover:border-slate-500 transition-all"
+            style={{ background: "rgba(255,255,255,0.04)" }}>
+            Iniciar sesión
+          </motion.button>
+        </div>
 
         {/* Logo */}
         <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
@@ -756,15 +756,107 @@ function LibroConductor({ onVolver }) {
   );
 }
 
+// ─── REVISION CONTENT ────────────────────────────────────────────────────────
+function RevisionContent({ preguntas, respuestas, user, guardado, guardando, onShowAuth }) {
+  return (
+    <div className="flex-1 overflow-y-auto px-4 md:px-0 py-5 md:py-0">
+      <div className="w-full max-w-4xl md:mx-auto">
+        <AnimatePresence>
+          {!user && !guardado && (
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              className="mb-6 rounded-2xl border border-blue-500/30 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              style={{ background: "rgba(59,130,246,0.06)" }}>
+              <div className="flex-1">
+                <p className="text-white font-bold text-sm mb-1">¿Quieres guardar tu progreso?</p>
+                <p className="text-slate-400 text-xs leading-relaxed">Crea una cuenta gratis para llevar historial, racha de días y ver tus errores por categoría.</p>
+              </div>
+              <button onClick={onShowAuth}
+                className="flex-shrink-0 bg-blue-500 hover:bg-blue-400 text-white font-bold px-5 py-2.5 rounded-xl transition-all text-sm outline-none border-0">
+                Registrarse gratis →
+              </button>
+            </motion.div>
+          )}
+          {guardando && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="mb-6 rounded-2xl border border-slate-700/40 bg-slate-800/40 p-4 text-slate-500 text-sm flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse inline-block" /> Guardando resultado...
+            </motion.div>
+          )}
+          {guardado && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-emerald-400 text-sm flex items-center gap-2">
+              ✓ Resultado guardado en tu perfil
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <div className="space-y-4 md:space-y-6">
+          {preguntas.map((p, i) => {
+            const ok = respuestas[i] === p.correcta;
+            return (
+              <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.03, duration: 0.3 }}
+                className={`rounded-2xl border ${ok ? "border-emerald-500/30 bg-emerald-500/5" : "border-red-500/30 bg-red-500/5"}`}>
+                <div className="px-4 md:px-8 pt-5 md:pt-8 pb-4 md:pb-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className={`text-sm font-bold uppercase tracking-widest ${ok ? "text-emerald-400" : "text-red-400"}`}>
+                      {ok ? "✓ Correcta" : "✗ Incorrecta"} · Pregunta {i + 1}
+                    </span>
+                    {p.puntaje === 2 && (
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">⭐ 2 pts</span>
+                    )}
+                  </div>
+                  <p className="text-white font-black text-lg md:text-2xl leading-snug mb-4">{p.pregunta}</p>
+                  {p.imagen && (
+                    <div className="mb-4 rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-800/40 flex items-center justify-center">
+                      <img src={p.imagen} alt="" className="max-h-48 w-auto object-contain p-3" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-3 px-4 md:px-8 pb-4 md:pb-6">
+                  {p.opciones.map((op, j) => {
+                    const esCorrecta = j === p.correcta;
+                    const esRespuesta = j === respuestas[i];
+                    const esIncorrecta = esRespuesta && !esCorrecta;
+                    return (
+                      <div key={j} className={`flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 rounded-2xl border-2 text-sm md:text-base font-medium ${
+                        esCorrecta ? "border-emerald-500 bg-emerald-500/10 text-emerald-300" :
+                        esIncorrecta ? "border-red-500 bg-red-500/10 text-red-300" :
+                        "border-slate-700/40 bg-slate-800/20 text-slate-500"
+                      }`}>
+                        <span className={`w-7 h-7 md:w-8 md:h-8 rounded-xl border-2 border-current flex items-center justify-center flex-shrink-0 font-black text-xs ${
+                          esCorrecta ? "bg-emerald-500/20" : esIncorrecta ? "bg-red-500/20" : ""
+                        }`}>
+                          {esCorrecta ? "✓" : esIncorrecta ? "✗" : String.fromCharCode(65 + j)}
+                        </span>
+                        <span className="flex-1">{op}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mx-4 md:mx-8 mb-5 md:mb-8 px-4 md:px-6 py-3 md:py-4 rounded-2xl bg-slate-800/60 border border-slate-700/40">
+                  <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">💡 Explicación</p>
+                  <p className="text-slate-300 text-sm md:text-base leading-relaxed">{p.explicacion}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── RESULTADO ────────────────────────────────────────────────────────────────
 function Resultado({ user, onAuthSuccess }) {
   const { respuestas, reiniciar, modo, clase, iniciar, preguntas } = useStore();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [guardado, setGuardado] = useState(false);
   const [guardando, setGuardando] = useState(false);
+  const [vistaMovil, setVistaMovil] = useState("score");
 
   const correctas = Object.entries(respuestas).filter(([i, r]) => preguntas[+i]?.correcta === r).length;
   const total = preguntas.length;
+  const pct = Math.round((correctas / total) * 100);
   const puntajeObtenido = Object.entries(respuestas).reduce((acc, [i, r]) => {
     const p = preguntas[+i]; if (!p) return acc;
     return acc + (p.correcta === r ? (p.puntaje ?? 1) : 0);
@@ -772,11 +864,9 @@ function Resultado({ user, onAuthSuccess }) {
   const puntajeMaximo = preguntas.reduce((acc, p) => acc + (p.puntaje ?? 1), 0);
   const aprobado = puntajeObtenido >= 33;
 
-  // Si ya tiene sesión: guardar automáticamente
   useEffect(() => {
     if (user && !guardado) {
       setGuardando(true);
-      console.log("Guardando examen — modo:", modo, "clase:", clase);
       Promise.all([
         guardarResultado({ userId: user.id, preguntas, respuestas, modo, clase, puntajeObtenido, puntajeMaximo }),
         guardarSesionAdaptativa(user.id, preguntas, respuestas, clase),
@@ -806,142 +896,254 @@ function Resultado({ user, onAuthSuccess }) {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         className="flex w-full h-full overflow-hidden flex-col md:flex-row">
 
-        {/* Score panel */}
-        <div className="md:w-80 lg:w-96 xl:w-[420px] flex-shrink-0 md:border-r border-slate-800 flex flex-col items-center justify-center p-6 md:p-10 border-b md:border-b-0">
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 180, delay: 0.1 }} className="text-5xl md:text-7xl mb-4 md:mb-6">
-            {aprobado ? "🎉" : "📚"}
-          </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className={`text-3xl md:text-4xl font-black mb-2 ${aprobado ? "text-emerald-400" : "text-red-400"}`}>
-            {aprobado ? "¡Aprobaste!" : "No aprobaste"}
-          </motion.h2>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-            className="text-slate-500 text-center text-sm mb-5 md:mb-8 leading-relaxed">
-            {aprobado ? "Excelente. Estás listo para el examen real." : "Sigue practicando, ya casi lo logras."}
-          </motion.p>
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3 }}
-            className={`w-32 h-32 md:w-40 md:h-40 rounded-full border-4 flex flex-col items-center justify-center mb-5 md:mb-8 ${aprobado ? "border-emerald-500 shadow-emerald-500/20" : "border-red-500 shadow-red-500/20"} shadow-2xl`}>
-            <span className="text-4xl md:text-5xl font-black text-white">{puntajeObtenido}</span>
-            <span className="text-xs md:text-sm text-slate-500 mt-1">de {puntajeMaximo} pts</span>
-          </motion.div>
-          <div className="flex gap-4 md:gap-6 mb-5 md:mb-8">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-emerald-400">{correctas}</div>
-              <div className="text-xs text-slate-500 mt-1">Correctas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-red-400">{total - correctas}</div>
-              <div className="text-xs text-slate-500 mt-1">Incorrectas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-blue-400">33</div>
-              <div className="text-xs text-slate-500 mt-1">Mínimo</div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 w-full max-w-xs md:max-w-none">
-            <button onClick={() => iniciar(modo)} className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg shadow-blue-500/20">
-              Intentar de nuevo
-            </button>
-            <button onClick={reiniciar} className="w-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-slate-200 font-semibold py-3.5 rounded-2xl transition-all bg-transparent outline-none">
-              Cambiar modo
-            </button>
-          </div>
-        </div>
+        {/* Wrapper móvil con AnimatePresence para slide entre vistas */}
+        <div className="md:contents">
+          <div className="md:hidden absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
+            <AnimatePresence mode="wait" initial={false}>
+              {vistaMovil === "score" ? (
+                <motion.div key="score-mobile"
+                  initial={{ x: "-100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: "-100%", opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="absolute inset-0 flex flex-col items-center justify-center px-6 py-8 overflow-hidden"
+                  style={{ background: "#0a0f1a" }}>
 
-        {/* Revisión */}
-        <div className="flex-1 overflow-y-auto flex justify-center px-4 md:px-16 py-6 md:py-10">
-          <div className="w-full max-w-4xl">
-            <h3 className="text-2xl md:text-3xl font-black text-white mb-5 md:mb-8">Revisión de respuestas</h3>
+                  {/* Fondo glow */}
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 1 }}
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: aprobado
+                      ? "radial-gradient(ellipse at 50% 30%, rgba(16,185,129,0.12) 0%, transparent 70%)"
+                      : "radial-gradient(ellipse at 50% 30%, rgba(239,68,68,0.10) 0%, transparent 70%)" }} />
 
-            {/* Banner guardar progreso */}
-            <AnimatePresence>
-              {!user && !guardado && (
-                <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  className="mb-6 rounded-2xl border border-blue-500/30 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-                  style={{ background: "rgba(59,130,246,0.06)" }}>
-                  <div className="flex-1">
-                    <p className="text-white font-bold text-sm mb-1">¿Quieres guardar tu progreso?</p>
-                    <p className="text-slate-400 text-xs leading-relaxed">Crea una cuenta gratis para llevar historial, racha de días y ver tus errores por categoría.</p>
+                  <motion.div initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 15, delay: 0.1 }}
+                    className="text-6xl mb-4 relative z-10">{aprobado ? "🎉" : "📚"}</motion.div>
+
+                  <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25, type: "spring", stiffness: 200 }}
+                    className={`text-3xl font-black mb-1.5 relative z-10 ${aprobado ? "text-emerald-400" : "text-red-400"}`}>
+                    {aprobado ? "¡Aprobaste!" : "No aprobaste"}
+                  </motion.h2>
+
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+                    className="text-slate-500 text-center text-sm mb-6 leading-relaxed relative z-10">
+                    {aprobado ? "Excelente. Estás listo para el examen real." : "Sigue practicando, ya casi lo logras."}
+                  </motion.p>
+
+                  <div className="relative mb-6 z-10">
+                    <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3, type: "spring", stiffness: 140, damping: 12 }}
+                      className={`w-36 h-36 rounded-full border-4 flex flex-col items-center justify-center ${aprobado ? "border-emerald-500" : "border-red-500"}`}
+                      style={{ boxShadow: aprobado ? "0 0 40px rgba(16,185,129,0.25), 0 0 80px rgba(16,185,129,0.1)" : "0 0 40px rgba(239,68,68,0.2), 0 0 80px rgba(239,68,68,0.08)" }}>
+                      <motion.span initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.55, type: "spring", stiffness: 200 }}
+                        className="text-5xl font-black text-white leading-none">{pct}%</motion.span>
+                      <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+                        className="text-xs text-slate-500 mt-1">{correctas} / {total}</motion.span>
+                    </motion.div>
+                    <motion.div initial={{ scale: 0.8, opacity: 0.6 }} animate={{ scale: 1.3, opacity: 0 }}
+                      transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+                      className={`absolute inset-0 rounded-full border-4 ${aprobado ? "border-emerald-500" : "border-red-500"}`} />
                   </div>
-                  <button onClick={() => setShowAuthModal(true)}
-                    className="flex-shrink-0 bg-blue-500 hover:bg-blue-400 text-white font-bold px-5 py-2.5 rounded-xl transition-all text-sm outline-none border-0">
-                    Registrarse gratis →
-                  </button>
+
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+                    className="flex gap-8 mb-6 relative z-10">
+                    {[
+                      { val: correctas, label: "Correctas", color: "text-emerald-400", delay: 0.55 },
+                      { val: total - correctas, label: "Incorrectas", color: "text-red-400", delay: 0.65 },
+                      { val: 33, label: "Mínimo", color: "text-blue-400", delay: 0.75 },
+                    ].map(({ val, label, color, delay }) => (
+                      <div key={label} className="text-center">
+                        <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay, type: "spring", stiffness: 220, damping: 12 }}
+                          className={`text-2xl font-black ${color}`}>{val}</motion.div>
+                        <div className="text-xs text-slate-500 mt-1">{label}</div>
+                      </div>
+                    ))}
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.65, type: "spring", stiffness: 180 }}
+                    className="flex flex-col gap-2.5 w-full relative z-10">
+                    <motion.button whileTap={{ scale: 0.96 }} onClick={() => setVistaMovil("revision")}
+                      className="w-full border-2 border-blue-500/50 text-blue-400 font-bold py-3.5 rounded-2xl bg-transparent outline-none">
+                      📋 Revisar respuestas
+                    </motion.button>
+                    <motion.button whileTap={{ scale: 0.96 }} whileHover={{ scale: 1.02 }} onClick={() => iniciar(modo)}
+                      className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-blue-500/20">
+                      Intentar de nuevo
+                    </motion.button>
+                    <motion.button whileTap={{ scale: 0.96 }} onClick={reiniciar}
+                      className="w-full border border-slate-700 text-slate-400 font-semibold py-3.5 rounded-2xl bg-transparent outline-none">
+                      Cambiar modo
+                    </motion.button>
+                  </motion.div>
                 </motion.div>
-              )}
-              {guardando && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="mb-6 rounded-2xl border border-slate-700/40 bg-slate-800/40 p-4 text-slate-500 text-sm flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse inline-block" /> Guardando resultado...
-                </motion.div>
-              )}
-              {guardado && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 text-emerald-400 text-sm flex items-center gap-2">
-                  ✓ Resultado guardado en tu perfil
+              ) : (
+                <motion.div key="revision-mobile"
+                  initial={{ x: "100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: "100%", opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="absolute inset-0 flex flex-col overflow-hidden"
+                  style={{ background: "#0a0f1a" }}>
+                  {/* Header fijo */}
+                  <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-800 flex-shrink-0"
+                    style={{ background: "rgba(10,15,26,0.97)", backdropFilter: "blur(12px)" }}>
+                    <motion.button whileTap={{ scale: 0.9 }} onClick={() => setVistaMovil("score")}
+                      className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white bg-slate-800 border-0 outline-none flex-shrink-0">
+                      ←
+                    </motion.button>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-black text-sm leading-none">Revisión de respuestas</p>
+                      <p className="text-slate-500 text-xs mt-0.5">{correctas} correctas · {total - correctas} incorrectas</p>
+                    </div>
+                  </div>
+                  {/* Contenido real de revisión */}
+                  <RevisionContent
+                    preguntas={preguntas} respuestas={respuestas}
+                    user={user} guardado={guardado} guardando={guardando}
+                    onShowAuth={() => setShowAuthModal(true)}
+                    mobile={true}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
-
-            <div className="space-y-4 md:space-y-6">
-              {preguntas.map((p, i) => {
-                const ok = respuestas[i] === p.correcta;
-                return (
-                  <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}
-                    className={`rounded-2xl border ${ok ? "border-emerald-500/30 bg-emerald-500/5" : "border-red-500/30 bg-red-500/5"}`}>
-                    <div className="px-4 md:px-8 pt-5 md:pt-8 pb-4 md:pb-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className={`text-sm font-bold uppercase tracking-widest ${ok ? "text-emerald-400" : "text-red-400"}`}>
-                          {ok ? "✓ Correcta" : "✗ Incorrecta"} · Pregunta {i + 1}
-                        </span>
-                        {p.puntaje === 2 && (
-                          <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">⭐ 2 pts</span>
-                        )}
-                      </div>
-                      <p className="text-white font-black text-lg md:text-2xl leading-snug mb-4">{p.pregunta}</p>
-                      {p.imagen && (
-                        <div className="mb-4 rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-800/40 flex items-center justify-center">
-                          <img src={p.imagen} alt="Imagen de la pregunta" className="max-h-48 w-auto object-contain p-3" />
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-2 md:gap-3 px-4 md:px-8 pb-4 md:pb-6">
-                      {p.opciones.map((op, j) => {
-                        const esCorrecta = j === p.correcta;
-                        const esRespuesta = j === respuestas[i];
-                        const esIncorrecta = esRespuesta && !esCorrecta;
-                        return (
-                          <div key={j} className={`flex items-center gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 rounded-2xl border-2 text-sm md:text-base font-medium ${
-                            esCorrecta ? "border-emerald-500 bg-emerald-500/10 text-emerald-300" :
-                            esIncorrecta ? "border-red-500 bg-red-500/10 text-red-300" :
-                            "border-slate-700/40 bg-slate-800/20 text-slate-500"
-                          }`}>
-                            <span className={`w-7 h-7 md:w-8 md:h-8 rounded-xl border-2 border-current flex items-center justify-center flex-shrink-0 font-black text-xs ${esCorrecta ? "bg-emerald-500/20" : esIncorrecta ? "bg-red-500/20" : ""}`}>
-                              {esCorrecta ? "✓" : esIncorrecta ? "✗" : String.fromCharCode(65 + j)}
-                            </span>
-                            <span className="flex-1">{op}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div className="mx-4 md:mx-8 mb-5 md:mb-8 px-4 md:px-6 py-3 md:py-4 rounded-2xl bg-slate-800/60 border border-slate-700/40">
-                      <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">💡 Explicación</p>
-                      <p className="text-slate-300 text-sm md:text-base leading-relaxed">{p.explicacion}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
           </div>
+        </div>
+
+        {/* Score panel — SOLO DESKTOP */}
+        <div className={`md:w-96 flex-shrink-0 md:border-r border-slate-800 flex-col items-center justify-center px-6 py-8 md:p-10 hidden md:flex relative overflow-hidden`}>
+
+          {/* Fondo glow aprobado/reprobado */}
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 1 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: aprobado
+              ? "radial-gradient(ellipse at 50% 30%, rgba(16,185,129,0.12) 0%, transparent 70%)"
+              : "radial-gradient(ellipse at 50% 30%, rgba(239,68,68,0.10) 0%, transparent 70%)"
+            }}
+          />
+
+          {/* Emoji con bounce */}
+          <motion.div
+            initial={{ scale: 0, rotate: -20 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 15, delay: 0.1 }}
+            className="text-6xl md:text-8xl mb-4 md:mb-5 relative z-10">
+            {aprobado ? "🎉" : "📚"}
+          </motion.div>
+
+          {/* Título con slide */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, type: "spring", stiffness: 200 }}
+            className={`text-3xl md:text-4xl font-black mb-1.5 relative z-10 ${aprobado ? "text-emerald-400" : "text-red-400"}`}>
+            {aprobado ? "¡Aprobaste!" : "No aprobaste"}
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+            className="text-slate-500 text-center text-sm mb-6 md:mb-8 leading-relaxed relative z-10">
+            {aprobado ? "Excelente. Estás listo para el examen real." : "Sigue practicando, ya casi lo logras."}
+          </motion.p>
+
+          {/* Círculo puntaje con ring animado */}
+          <div className="relative mb-6 md:mb-8 z-10">
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 140, damping: 12 }}
+              className={`w-36 h-36 md:w-44 md:h-44 rounded-full border-4 flex flex-col items-center justify-center ${aprobado ? "border-emerald-500" : "border-red-500"} shadow-2xl`}
+              style={{ boxShadow: aprobado ? "0 0 40px rgba(16,185,129,0.25), 0 0 80px rgba(16,185,129,0.1)" : "0 0 40px rgba(239,68,68,0.2), 0 0 80px rgba(239,68,68,0.08)" }}>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.55, type: "spring", stiffness: 200 }}
+                className="text-5xl md:text-6xl font-black text-white leading-none">
+                {pct}%
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+                className="text-xs md:text-sm text-slate-500 mt-1">
+                {correctas} / {total}
+              </motion.span>
+            </motion.div>
+            {/* Ring pulse */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0.6 }}
+              animate={{ scale: 1.3, opacity: 0 }}
+              transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+              className={`absolute inset-0 rounded-full border-4 ${aprobado ? "border-emerald-500" : "border-red-500"}`}
+            />
+          </div>
+
+          {/* Stats con stagger */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex gap-6 md:gap-10 mb-6 md:mb-8 relative z-10">
+            {[
+              { val: correctas, label: "Correctas", color: "text-emerald-400", delay: 0.55 },
+              { val: total - correctas, label: "Incorrectas", color: "text-red-400", delay: 0.65 },
+              { val: 33, label: "Mínimo", color: "text-blue-400", delay: 0.75 },
+            ].map(({ val, label, color, delay }) => (
+              <div key={label} className="text-center">
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay, type: "spring", stiffness: 220, damping: 12 }}
+                  className={`text-2xl md:text-3xl font-black ${color}`}>
+                  {val}
+                </motion.div>
+                <div className="text-xs text-slate-500 mt-1">{label}</div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Botones */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, type: "spring", stiffness: 180 }}
+            className="flex flex-col gap-2.5 w-full max-w-xs md:max-w-none relative z-10">
+            <motion.button whileTap={{ scale: 0.96 }} whileHover={{ scale: 1.02 }}
+              onClick={() => setVistaMovil("revision")}
+              className="md:hidden w-full border-2 border-blue-500/50 text-blue-400 font-bold py-3.5 rounded-2xl transition-all bg-transparent outline-none">
+              📋 Revisar respuestas
+            </motion.button>
+            <motion.button whileTap={{ scale: 0.96 }} whileHover={{ scale: 1.02 }}
+              onClick={() => iniciar(modo)}
+              className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg shadow-blue-500/20">
+              Intentar de nuevo
+            </motion.button>
+            <motion.button whileTap={{ scale: 0.96 }}
+              onClick={reiniciar}
+              className="w-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-slate-200 font-semibold py-3.5 rounded-2xl transition-all bg-transparent outline-none">
+              Cambiar modo
+            </motion.button>
+          </motion.div>
+        </div>
+
+        {/* Revisión — SOLO DESKTOP */}
+        <div className="flex-1 hidden md:flex flex-col overflow-y-auto">
+          <div className="px-16 pt-10 pb-2">
+            <h3 className="text-3xl font-black text-white mb-8">Revisión de respuestas</h3>
+          </div>
+          <RevisionContent
+            preguntas={preguntas} respuestas={respuestas}
+            user={user} guardado={guardado} guardando={guardando}
+            onShowAuth={() => setShowAuthModal(true)}
+          />
         </div>
       </motion.div>
     </>
   );
 }
-
-// ─── SELECTOR DE CLASE ────────────────────────────────────────────────────────
+// ─── SELECTOR DE CLASE
 function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
-  const [inteligente, setInteligente] = useState(!!user); // activado por defecto si tiene cuenta
+  const [inteligente, setInteligente] = useState(!!user);
   const nombreModo = modo === "examen" ? "Modo Examen" : modo === "estudio" ? "Modo Estudio" : "Modo Libre";
   const colorModo = modo === "examen" ? "blue" : modo === "estudio" ? "amber" : "emerald";
   const colors = {
@@ -961,7 +1163,6 @@ function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
         style={{ background: "#0d1626" }}
         onClick={e => e.stopPropagation()}>
 
-        {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
             <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${c.badge} uppercase tracking-widest`}>{nombreModo}</span>
@@ -972,7 +1173,6 @@ function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
           </button>
         </div>
 
-        {/* Toggle selección inteligente */}
         {user && (
           <motion.button
             onClick={() => setInteligente(v => !v)}
@@ -988,7 +1188,6 @@ function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
                 {inteligente ? "Priorizará tus preguntas débiles automáticamente" : "Selección aleatoria estándar"}
               </p>
             </div>
-            {/* Toggle switch */}
             <div className={`w-10 h-6 rounded-full flex-shrink-0 transition-colors relative ${inteligente ? "bg-purple-500" : "bg-slate-700"}`}>
               <motion.div
                 className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow"
@@ -999,9 +1198,7 @@ function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
           </motion.button>
         )}
 
-        {/* Cards de clase */}
         <div className="flex flex-col gap-3">
-          {/* Clase B */}
           <button onClick={() => onSeleccionar(modo, "B", inteligente)}
             className="text-left p-5 rounded-2xl border-2 transition-all hover:-translate-y-0.5 active:scale-98 outline-none group border-blue-500/30 hover:border-blue-500"
             style={{ background: "rgba(59,130,246,0.06)" }}>
@@ -1018,7 +1215,6 @@ function SelectorClase({ modo, onSeleccionar, onCancelar, user }) {
             </div>
           </button>
 
-          {/* Clase C */}
           <button onClick={() => onSeleccionar(modo, "C", inteligente)}
             className="text-left p-5 rounded-2xl border-2 transition-all hover:-translate-y-0.5 active:scale-98 outline-none group border-orange-500/30 hover:border-orange-500"
             style={{ background: "rgba(249,115,22,0.06)" }}>
@@ -1050,7 +1246,7 @@ export default function App() {
   const [authModalModo, setAuthModalModo] = useState("login");
   const [pantallaExtra, setPantallaExtra] = useState(null);
   const [legalTipo, setLegalTipo] = useState(null);
-  const [selectorClase, setSelectorClase] = useState(null); // null | "examen" | "estudio" | "libre"
+  const [selectorClase, setSelectorClase] = useState(null);
 
   if (loading) {
     return (
@@ -1089,9 +1285,7 @@ export default function App() {
   };
 
   const handleLoginClick = () => { setAuthModalModo("login"); setShowAuthModal(true); };
-
   const handleLegal = (tipo) => setLegalTipo(tipo);
-
   const mostrarDashboard = user && pantalla === "inicio" && !pantallaExtra;
 
   return (
@@ -1133,19 +1327,16 @@ export default function App() {
       </AnimatePresence>
       <div className="relative z-10 flex-1 flex overflow-hidden">
         <AnimatePresence mode="wait">
-          {/* Banco de preguntas — requiere login */}
           {pantallaExtra === "banco" && user && (
             <motion.div key="banco" className="flex w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <BancoPreguntas onVolver={() => setPantallaExtra(null)} />
             </motion.div>
           )}
-          {/* Libro del conductor */}
           {pantallaExtra === "libro" && user && (
             <motion.div key="libro" className="flex w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <LibroConductor onVolver={() => setPantallaExtra(null)} />
             </motion.div>
           )}
-          {/* Dashboard */}
           {mostrarDashboard && !pantallaExtra && (
             <motion.div key="dashboard" className="flex w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <Dashboard user={user} onIniciar={handleIniciar} onLogout={handleLogout}
@@ -1154,17 +1345,14 @@ export default function App() {
                 onLegal={handleLegal} />
             </motion.div>
           )}
-          {/* Inicio sin sesión */}
           {!mostrarDashboard && pantalla === "inicio" && !pantallaExtra && (
             <Inicio key="inicio" onIniciar={handleIniciar} onLoginClick={handleLoginClick} onLegalClick={handleLegal} />
           )}
-          {/* Examen */}
           {pantalla === "examen" && !pantallaExtra && (
             <motion.div key="examen" className="flex w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {modo === "examen" ? <ModoExamen /> : <ModoEstudio />}
             </motion.div>
           )}
-          {/* Resultado */}
           {pantalla === "resultado" && !pantallaExtra && (
             <Resultado key="resultado" user={user} onAuthSuccess={handleAuthSuccess} />
           )}
