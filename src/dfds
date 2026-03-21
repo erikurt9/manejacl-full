@@ -1,0 +1,7 @@
+<motion.div
+  className="h-full bg-amber-400"
+  animate={{ width: `${((preguntaActual + 1) / preguntas.length) * 100}%` }}
+  transition={{ duration: 0.4 }}
+/>
+
+{[["2+", "Preguntas"], ["100%", "Gratis"], ["45 min", "Por examen"], ["2025", "Actualizado"]].map(([v, l]) => (

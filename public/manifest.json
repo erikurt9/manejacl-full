@@ -1,0 +1,25 @@
+{
+  "name": "ManejaCL — Simulador Examen Teórico CONASET",
+  "short_name": "ManejaCL",
+  "description": "Practica gratis el examen teórico de conducir chileno. 160 preguntas oficiales CONASET, modo examen y modo estudio con explicaciones.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1a",
+  "theme_color": "#0a0f1a",
+  "orientation": "portrait",
+  "lang": "es-CL",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
