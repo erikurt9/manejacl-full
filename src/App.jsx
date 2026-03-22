@@ -1454,6 +1454,8 @@ export default function App() {
   const [pantallaExtra, setPantallaExtra] = useState(null);
   const [claseExtra, setClaseExtra] = useState("B");
   const [claseGlobal, setClaseGlobal] = useState("B");
+  const [claseSeleccionada, setClaseSeleccionada] = useState("B");
+  const handleClaseChange = (c) => { setClaseGlobal(c); setClaseSeleccionada(c); };
   const [legalTipo, setLegalTipo] = useState(null);
   const [selectorClase, setSelectorClase] = useState(null);
 
@@ -1578,7 +1580,8 @@ const handleIniciarConClase = async (modo, clase) => {
                 onBanco={(c) => { setClaseExtra(c || "B"); setPantallaExtra("banco"); }}
                 onLibro={() => setPantallaExtra("libro")}
                 onLegal={handleLegal}
-                onClaseChange={setClaseGlobal} />
+                initialClase={claseSeleccionada}
+                onClaseChange={handleClaseChange} />
             </motion.div>
           )}
           {!mostrarDashboard && pantalla === "inicio" && !pantallaExtra && (

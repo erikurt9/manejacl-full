@@ -172,14 +172,16 @@ export async function generarExamenAdaptativo(userId, clase = "B") {
 
 // ─── CALCULAR PROBABILIDAD DE APROBAR ────────────────────────────────────────
 export async function calcularProbabilidadAprobar(userId, clase = "B") {
-  const { data: examenes } = await supabase
+  const { data: examenes, error } = await supabase
     .from("examenes")
     .select("puntaje_obtenido, created_at")
     .eq("user_id", userId)
     .eq("modo", "examen")
+    .eq("clase", clase)
     .order("created_at", { ascending: false })
     .limit(10);
 
+  
   if (!examenes || examenes.length === 0) return null;
 
   // Contar racha actual de aprobados (desde el más reciente)
@@ -273,3 +275,4 @@ export async function obtenerPreguntasDebiles(userId, clase = "B") {
     .map(s => banco.find(p => p.id === s.pregunta_id))
     .filter(Boolean);
 }
+

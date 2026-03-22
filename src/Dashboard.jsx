@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { obtenerDashboard, obtenerDetalleExamen, eliminarExamen, limpiarStats } from "./db";
 import { calcularProbabilidadAprobar, obtenerResumenAdaptativo } from "./adaptativo";
@@ -917,11 +917,33 @@ export function Dashboard({ user, onIniciar, onLogout, onBanco, onLibro, onLegal
   const [clase, setClase] = useState("B");
   const handleClase = (c) => { setClase(c); if (onClaseChange) onClaseChange(c); };
 
+  const claseRef = useRef(clase);
+
   useEffect(() => {
+    claseRef.current = clase;
+    let cancelled = false;
+
     setLoading(true);
-    obtenerDashboard(user.id, clase).then(setDatos).finally(() => setLoading(false));
-    obtenerResumenAdaptativo(user.id, clase).then(setAdaptativo).catch(() => {});
-    calcularProbabilidadAprobar(user.id, clase).then(setProbabilidad).catch(() => {});
+    setProbabilidad(null);
+    setAdaptativo(null);
+    setDatos(null);
+
+    obtenerDashboard(user.id, clase)
+      .then(d => { if (!cancelled && claseRef.current === clase) setDatos(d); })
+      .finally(() => { if (!cancelled && claseRef.current === clase) setLoading(false); });
+
+    obtenerResumenAdaptativo(user.id, clase)
+      .then(d => { if (!cancelled && claseRef.current === clase) setAdaptativo(d); })
+      .catch(() => { if (!cancelled && claseRef.current === clase) setAdaptativo(null); });
+
+    calcularProbabilidadAprobar(user.id, clase)
+      .then(p => {
+        
+        if (!cancelled && claseRef.current === clase) setProbabilidad(p ?? null);
+      })
+      .catch(() => { if (!cancelled && claseRef.current === clase) setProbabilidad(null); });
+
+    return () => { cancelled = true; };
   }, [user.id, clase]);
 
   const abrirDetalle = async (examen) => {
@@ -945,6 +967,7 @@ const handleEliminar = async (id) => {
       setProbabilidad(null);
     } else {
       obtenerResumenAdaptativo(user.id, clase).then(setAdaptativo).catch(() => {});
+      calcularProbabilidadAprobar(user.id, clase).then(p => setProbabilidad(p ?? null)).catch(() => setProbabilidad(null));
     }
   } catch (err) {
     console.error("Error eliminando examen:", err);
